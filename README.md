@@ -120,6 +120,7 @@ cy.get('button').checkAccessibility({
 | `shouldFail`    | `(violations: AxeResults['violations']) => boolean`                                      | `(violations) => violations.length > 0` | A function that determines if the test should fail based on the violations. |
 | `axeRunOptions` | [`axe.RunOptions`](https://github.com/dequelabs/axe-core/blob/master/axe.d.ts#L134-L149) | `{}`                                    | The options to pass to the `axe.run()` method.                              |
 | `reporters`     | `((results: AxeResults) => void)[]`                                                      | `[]`                                    | An array of functions that will be called with the results.                 |
+| `retry`         | `{ interval: number, times: number }`                                                    | `{ interval: 500, times: 0 }`           | The interval and number of times to retry the check if it fails.            |
 
 ## Acknowledgements
 
