@@ -1,7 +1,20 @@
 {
   "name": "cypress-accessibility",
   "version": "0.1.0",
-  "description": "",
+  "description": "Yet another Cypress plugin for accessibility testing powered by axe-core®",
+  "homepage": "https://github.com/rowellx68/cypress-accessibility",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rowellx68/cypress-accessibility"
+  },
+  "bugs": {
+    "url": "https://github.com/rowellx68/cypress-accessibility/issues"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.cts",
