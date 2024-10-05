@@ -27,3 +27,12 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: examples/basic
+          start: pnpm dev
+          wait-on: 'http://localhost:1234'
+          wait-on-timeout: 60
+          install: false
