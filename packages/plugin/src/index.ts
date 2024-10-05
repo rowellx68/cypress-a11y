@@ -1,12 +1,4 @@
-import type {
-  Spec as AxeSpec,
-  Result,
-  ElementContext,
-  RunOptions,
-  run,
-  UnlabelledFrameSelector,
-  AxeResults,
-} from 'axe-core';
+import * as axe from 'axe-core';
 
 declare global {
   namespace Cypress {
@@ -19,7 +11,7 @@ declare global {
       /**
        * Configures the axe-core library with the given options.
        */
-      configureAxe(options?: AxeSpec): Chainable<void>;
+      configureAxe(options?: axe.Spec): Chainable<void>;
 
       /**
        * Runs an accessibility check on the current window or a specific element.
@@ -38,38 +30,38 @@ export type InitOptions = {
 };
 
 export type CheckA11yOptions = {
-  shouldFail?: (violations: Result[], results: AxeResults) => boolean;
-  axeRunOptions?: RunOptions;
+  shouldFail?: (violations: axe.Result[], results: axe.AxeResults) => boolean;
+  axeRunOptions?: axe.RunOptions;
 };
 
 const injectAxe = (options: InitOptions = {}) => {
   const path = options?.axeCorePath || 'node_modules/axe-core/axe.min.js';
 
-  cy.readFile<string>(path, { log: false }).then((content) => {
+  cy.readFile<string>(path).then((content) => {
     cy.window({ log: false }).then((win) => {
       win.eval(content);
-      cy.log(`axe-core v${win.axe.version} injected from '${path}'`);
+      cy.log(`axe-core v${win.axe.version} initialised`);
     });
   });
 };
 
-const configureAxe = (options: AxeSpec = {}) => {
+const configureAxe = (options: axe.Spec = {}) => {
   cy.window({ log: false }).then((win) => {
     win.axe.configure(options);
   });
 };
 
 const runA11y = async (
-  axeRun: typeof run,
-  context: ElementContext,
-  options: RunOptions,
-): Promise<AxeResults> => {
-  return axeRun(context, options);
+  run: typeof axe.run,
+  context: axe.ElementContext,
+  options: axe.RunOptions,
+): Promise<axe.AxeResults> => {
+  return run(context, options);
 };
 
 const checkA11y = (subject: unknown, options: CheckA11yOptions = {}) => {
   const { shouldFail, axeRunOptions } = {
-    shouldFail: (violations: Result[], _results: AxeResults) =>
+    shouldFail: (violations: axe.Result[], _results: axe.AxeResults) =>
       violations.length > 0,
     axeRunOptions: {},
     ...options,
@@ -79,7 +71,7 @@ const checkA11y = (subject: unknown, options: CheckA11yOptions = {}) => {
     .then((win) => {
       return runA11y(
         win.axe.run,
-        (subject as ElementContext) || win.document,
+        (subject as axe.ElementContext) || win.document,
         axeRunOptions,
       );
     })
@@ -88,7 +80,7 @@ const checkA11y = (subject: unknown, options: CheckA11yOptions = {}) => {
         results.violations.forEach((violation) => {
           const selectors = violation.nodes
             .reduce<
-              UnlabelledFrameSelector[]
+            axe.UnlabelledFrameSelector[]
             >((acc, node) => acc.concat(node.target), [])
             .join(', ');
 
