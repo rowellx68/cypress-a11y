@@ -6,7 +6,7 @@ declare global {
       /**
        * Injects the axe-core library into the current window.
        */
-      injectAxe(options?: InitOptions): Chainable<void>;
+      injectAxe(options?: InjectAxeOptions): Chainable<void>;
 
       /**
        * Configures the axe-core library with the given options.
@@ -20,22 +20,25 @@ declare global {
        * cy.checkA11y();
        * cy.get('custom-element').checkA11y();
        */
-      checkA11y(options?: CheckA11yOptions): Chainable<void>;
+      checkAccessibility(options?: CheckA11yOptions): Chainable<void>;
     }
   }
 }
 
-export type InitOptions = {
-  axeCorePath?: string;
+export type InjectAxeOptions = {
+  path?: string;
 };
 
 export type CheckA11yOptions = {
-  shouldFail?: (violations: axe.Result[], results: axe.AxeResults) => boolean;
+  shouldFail?: (violations: axe.Result[]) => boolean;
+  reporters?: CypressAccessibilityReporter[];
   axeRunOptions?: axe.RunOptions;
 };
 
-const injectAxe = (options: InitOptions = {}) => {
-  const path = options?.axeCorePath || 'node_modules/axe-core/axe.min.js';
+export type CypressAccessibilityReporter = (results: axe.AxeResults) => void;
+
+const injectAxe = (options: InjectAxeOptions = {}) => {
+  const path = options?.path || 'node_modules/axe-core/axe.min.js';
 
   cy.readFile<string>(path).then((content) => {
     cy.window({ log: false }).then((win) => {
@@ -47,6 +50,10 @@ const injectAxe = (options: InitOptions = {}) => {
 
 const configureAxe = (options: axe.Spec = {}) => {
   cy.window({ log: false }).then((win) => {
+    if (!win.axe) {
+      assert.fail('axe-core is not initialised');
+    }
+
     win.axe.configure(options);
   });
 };
@@ -59,16 +66,23 @@ const runA11y = async (
   return run(context, options);
 };
 
-const checkA11y = (subject: unknown, options: CheckA11yOptions = {}) => {
-  const { shouldFail, axeRunOptions } = {
-    shouldFail: (violations: axe.Result[], _results: axe.AxeResults) =>
-      violations.length > 0,
+const checkAccessibility = (
+  subject: unknown,
+  options: CheckA11yOptions = {},
+) => {
+  const { shouldFail, axeRunOptions, reporters } = {
+    shouldFail: (violations: axe.Result[]) => violations.length > 0,
+    reporters: [],
     axeRunOptions: {},
     ...options,
   };
 
   cy.window({ log: false })
     .then((win) => {
+      if (!win.axe) {
+        assert.fail('axe-core is not initialised');
+      }
+
       return runA11y(
         win.axe.run,
         (subject as axe.ElementContext) || win.document,
@@ -80,7 +94,7 @@ const checkA11y = (subject: unknown, options: CheckA11yOptions = {}) => {
         results.violations.forEach((violation) => {
           const selectors = violation.nodes
             .reduce<
-            axe.UnlabelledFrameSelector[]
+              axe.UnlabelledFrameSelector[]
             >((acc, node) => acc.concat(node.target), [])
             .join(', ');
 
@@ -97,18 +111,20 @@ const checkA11y = (subject: unknown, options: CheckA11yOptions = {}) => {
       return cy.wrap(results, { log: false });
     })
     .then((results) => {
-      if (shouldFail(results.violations, results)) {
-        expect(results.violations.length, 'Expected zero violations').to.equal(
-          0,
+      if (shouldFail(results.violations)) {
+        assert.fail(
+          `Accessibility violations found: ${results.violations.length}`,
         );
       }
+
+      reporters.forEach((reporter) => reporter(results));
     });
 };
 
 Cypress.Commands.add('injectAxe', injectAxe);
 Cypress.Commands.add('configureAxe', configureAxe);
 Cypress.Commands.add(
-  'checkA11y',
-  { prevSubject: 'optional' },
-  (subject, options) => checkA11y(subject, options),
+  'checkAccessibility',
+  { prevSubject: ['optional', 'element'] },
+  (subject, options) => checkAccessibility(subject, options),
 );
