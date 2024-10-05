@@ -15,7 +15,13 @@
     "CHANGELOG.md",
     "LICENSE.md"
   ],
-  "keywords": ["cypress", "accessibility", "plugin", "a11y", "axe-core"],
+  "keywords": [
+    "cypress",
+    "accessibility",
+    "plugin",
+    "a11y",
+    "axe-core"
+  ],
   "author": "Rowell Heria",
   "license": "MIT",
   "devDependencies": {

@@ -2,7 +2,10 @@
   "name": "cypress-accessibility-monorepo",
   "version": "0.0.0",
   "scripts": {
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "format": "prettier --write .",
+    "release": "pnpm changeset publish",
+    "cc:changeset": "pnpm changeset-conventional"
   },
   "keywords": [],
   "author": "Rowell Heria",
