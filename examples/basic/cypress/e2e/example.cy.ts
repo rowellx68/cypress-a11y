@@ -1,7 +1,13 @@
-describe('template spec', () => {
+describe('example', () => {
   it('passes', () => {
-    cy.visit('https://www.cypress.io');
+    cy.visit('/');
     cy.injectAxe();
-    cy.checkAccessibility();
+    cy.checkAccessibility({
+      retry: {
+        interval: 400,
+        limit: 1,
+      },
+      reporters: [(results) => console.table(results.passes)],
+    });
   });
 });
