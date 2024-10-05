@@ -21,29 +21,7 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
 
-  examples/demo:
-    devDependencies:
-      axe-core:
-        specifier: ^4.10.0
-        version: 4.10.0
-      cypress:
-        specifier: ^13.15.0
-        version: 13.15.0
-      cypress-a11y:
-        specifier: workspace:*
-        version: link:../../packages/plugin
-      tslib:
-        specifier: ^2.7.0
-        version: 2.7.0
-      typescript:
-        specifier: ^5.6.2
-        version: 5.6.2
-
   packages/plugin:
-    dependencies:
-      tslib:
-        specifier: ^2.7.0
-        version: 2.7.0
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^28.0.0
