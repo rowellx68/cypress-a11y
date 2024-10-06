@@ -1,5 +1,13 @@
 # cypress-accessibility
 
+## 1.0.0
+
+### Major Changes
+
+- [#8](https://github.com/rowellx68/cypress-accessibility/pull/8) [`2bdceb1`](https://github.com/rowellx68/cypress-accessibility/commit/2bdceb1b6b5bceaf178ec9a9b121d18a3c28a39d) Thanks [@rowellx68](https://github.com/rowellx68)! - refactor: update option name
+
+  BREAKING CHANGE: renamed axeRunOptions to runOptions
+
 ## 0.2.1
 
 ### Patch Changes
