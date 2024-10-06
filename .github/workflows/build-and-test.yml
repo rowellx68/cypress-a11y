@@ -23,7 +23,9 @@ jobs:
           cache-dependency-path: './pnpm-lock.yaml'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        uses: cypress-io/github-action@v6
+        with:
+          runTests: false
 
       - name: Build
         run: pnpm build
