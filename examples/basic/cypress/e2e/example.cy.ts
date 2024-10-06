@@ -1,3 +1,5 @@
+import { createHtmlReport } from 'cypress-accessibility-html-reporter';
+
 describe('example', () => {
   it('passes', () => {
     cy.visit('/');
@@ -7,7 +9,7 @@ describe('example', () => {
         interval: 400,
         limit: 1,
       },
-      reporters: [(results) => console.table(results.passes)],
+      reporters: [(results) => createHtmlReport({ results })],
     });
   });
 });
