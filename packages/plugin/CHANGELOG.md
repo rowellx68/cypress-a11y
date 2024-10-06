@@ -1,5 +1,13 @@
 # cypress-accessibility
 
+## 0.2.1
+
+### Patch Changes
+
+- [#6](https://github.com/rowellx68/cypress-accessibility/pull/6) [`35db34e`](https://github.com/rowellx68/cypress-accessibility/commit/35db34ebc9643b2c0dfe64013f662f75aee82b87) Thanks [@rowellx68](https://github.com/rowellx68)! - fix: update log message and type
+
+- [#6](https://github.com/rowellx68/cypress-accessibility/pull/6) [`fd249a0`](https://github.com/rowellx68/cypress-accessibility/commit/fd249a0bb91fcf552f3ec86f7338c26d510bae5b) Thanks [@rowellx68](https://github.com/rowellx68)! - docs: update readme
+
 ## 0.2.0
 
 ### Minor Changes
