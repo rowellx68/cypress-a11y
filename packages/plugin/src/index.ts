@@ -60,19 +60,33 @@ export type CheckA11yOptions = {
   runOptions?: axe.RunOptions;
 };
 
-export type RetryOptions = {
-  /**
-   * The interval in milliseconds to wait between retries.
-   * @default 500
-   */
-  interval?: number;
+export type RetryOptions =
+  | {
+      /**
+       * The interval in milliseconds to wait between retries.
+       * @default 500
+       */
+      interval: number;
 
-  /**
-   * The maximum number of retries.
-   * @default 0
-   */
-  limit?: number;
-};
+      /**
+       * The maximum number of retries.
+       * @default 0
+       */
+      limit: number;
+    }
+  | {
+      /**
+       * The interval in milliseconds to wait between retries.
+       * @default 500
+       */
+      interval?: number;
+
+      /**
+       * The maximum number of retries.
+       * @default 0
+       */
+      limit: number;
+    };
 
 export type CypressAccessibilityReporter = (results: axe.AxeResults) => void;
 
@@ -112,17 +126,20 @@ const runA11y = async (
   retry: Required<RetryOptions>,
 ): Promise<axe.AxeResults> => {
   return run(context, options).then((results) => {
+    const limitAbsolute = Math.abs(retry.limit);
+    const intervalAbsolute = Math.abs(retry.interval);
+
     if (results.violations.length === 0) {
       return results;
     }
 
-    if (retry.limit === 0) {
+    if (limitAbsolute === 0) {
       return results;
     }
 
     return new Promise((resolve) => {
       setTimeout(() => {
-        const limit = retry.limit - 1;
+        const limit = limitAbsolute - 1;
 
         Cypress.log({
           name: 'cypress-accessibility',
@@ -130,8 +147,13 @@ const runA11y = async (
           type: 'parent',
           consoleProps: () => results.violations,
         });
-        resolve(runA11y(run, context, options, { ...retry, limit }));
-      }, retry.interval);
+        resolve(
+          runA11y(run, context, options, {
+            ...retry,
+            limit,
+          }),
+        );
+      }, intervalAbsolute);
     });
   });
 };
@@ -189,7 +211,7 @@ const checkAccessibility = (
     })
     .then((results) => {
       if (shouldFail(results.violations)) {
-        const totalRuns = retry.limit + 1;
+        const totalRuns = Math.abs(retry.limit) + 1;
 
         assert.fail(
           `accessibility ${pluralise(results.violations.length, 'violation')} found (${results.violations.length}) after ${totalRuns} ${pluralise(totalRuns, 'run')}`,
