@@ -6,11 +6,11 @@
 ![NPM](https://img.shields.io/npm/v/cypress-accessibility?style=flat-square&label=Version)
 </a>
 
-Yet another Cypress plugin for accessibility testing powered by [axe-core®](https://github.com/dequelabs/axe-core).
+Yet another Cypress plugin for accessibility testing powered by [axe-core®](https://github.com/dequelabs/axe-core). This is a fork of [cypress-axe](https://github.com/component-driven/cypress-axe) with some api changes and improvements.
+
+<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="../../docs/assets/basic-demo.png" />
 
 Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries. This plugin is not affiliated with or endorsed by Deque Systems, Inc.
-
-This is a fork of [cypress-axe](https://github.com/component-driven/cypress-axe) with some api changes and improvements.
 
 ## Installation
 
@@ -55,15 +55,15 @@ cy.injectAxe();
 
 // or
 cy.injectAxe({
-  path: 'axe-core/axe.min.js',
+  path: 'custom-path/axe-core/axe.min.js',
 });
 ```
 
 #### Options
 
-| Name   | Type     | Default                 | Description                        |
-| ------ | -------- | ----------------------- | ---------------------------------- |
-| `path` | `string` | `'axe-core/axe.min.js'` | The path to the axe-core® script. |
+| Name   | Type     | Default                              | Description                        |
+| ------ | -------- | ------------------------------------ | ---------------------------------- |
+| `path` | `string` | `'node_modules/axe-core/axe.min.js'` | The path to the axe-core® script. |
 
 ### `cy.configureAxe()`
 
