@@ -12,6 +12,8 @@ Yet another Cypress plugin for accessibility testing powered by [axe-core®](htt
 
 Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries. This plugin is not affiliated with or endorsed by Deque Systems, Inc.
 
+If you're looking to migrate from `cypress-axe`, you can find the migration guide [here](https://github.com/rowellx68/cypress-accessibility/blob/main/docs).
+
 ## Installation
 
 This plugin **only** works with Cypress version 10.0.0 or higher.
@@ -115,12 +117,12 @@ cy.get('button').checkAccessibility({
 
 #### Options
 
-| Name            | Type                                                                                     | Default                                 | Description                                                                 |
-| --------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------- |
-| `shouldFail`    | `(violations: AxeResults['violations']) => boolean`                                      | `(violations) => violations.length > 0` | A function that determines if the test should fail based on the violations. |
+| Name         | Type                                                                                     | Default                                 | Description                                                                 |
+| ------------ | ---------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------- |
+| `shouldFail` | `(violations: AxeResults['violations']) => boolean`                                      | `(violations) => violations.length > 0` | A function that determines if the test should fail based on the violations. |
 | `runOptions` | [`axe.RunOptions`](https://github.com/dequelabs/axe-core/blob/master/axe.d.ts#L134-L149) | `{}`                                    | The options to pass to the `axe.run()` method.                              |
-| `reporters`     | `((results: AxeResults) => void)[]`                                                      | `[]`                                    | An array of functions that will be called with the results.                 |
-| `retry`         | `{ interval: number, times: number }`                                                    | `{ interval: 500, times: 0 }`           | The interval and number of times to retry the check if it fails.            |
+| `reporters`  | `((results: AxeResults) => void)[]`                                                      | `[]`                                    | An array of functions that will be called with the results.                 |
+| `retry`      | `{ interval: number, times: number }`                                                    | `{ interval: 500, times: 0 }`           | The interval and number of times to retry the check if it fails.            |
 
 ## Acknowledgements
 
