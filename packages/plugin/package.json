@@ -1,6 +1,6 @@
 {
   "name": "cypress-accessibility",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yet another Cypress plugin for accessibility testing powered by axe-core®",
   "homepage": "https://github.com/rowellx68/cypress-accessibility",
   "repository": {
