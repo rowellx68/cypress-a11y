@@ -66,7 +66,7 @@ This `cypress-accessibility` feature allows you to chain the command to a specif
 -cy.checkA11y(null, null, null, true);
 +cy.checkAccessibility({
 +  shouldFail: () => false,
-});
++});
 ```
 
 #### With retries
