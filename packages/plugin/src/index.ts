@@ -57,7 +57,7 @@ export type CheckA11yOptions = {
   /**
    * Options to pass to the axe-core run method.
    */
-  axeRunOptions?: axe.RunOptions;
+  runOptions?: axe.RunOptions;
 };
 
 export type RetryOptions = {
@@ -140,12 +140,12 @@ const checkAccessibility = (
   subject: unknown,
   options: CheckA11yOptions = {},
 ) => {
-  const { shouldFail, axeRunOptions, reporters, retry } = {
+  const { shouldFail, runOptions, reporters, retry } = {
     shouldFail: !options.shouldFail
       ? (violations: axe.Result[]) => violations.length > 0
       : options.shouldFail,
     reporters: options.reporters || [],
-    axeRunOptions: options.axeRunOptions || {},
+    runOptions: options.runOptions || {},
     retry: {
       interval: 500,
       limit: 0,
@@ -162,7 +162,7 @@ const checkAccessibility = (
       return runA11y(
         win.axe.run,
         (subject as axe.ElementContext) || win.document,
-        axeRunOptions,
+        runOptions,
         retry,
       );
     })
