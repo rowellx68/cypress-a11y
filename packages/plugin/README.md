@@ -8,7 +8,7 @@
 
 Yet another Cypress plugin for accessibility testing powered by [axe-core®](https://github.com/dequelabs/axe-core). This is a fork of [cypress-axe](https://github.com/component-driven/cypress-axe) with some api changes and improvements.
 
-<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="../../docs/assets/basic-demo.png" />
+<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-accessibility/blob/main/docs/assets/basic-demo.png?raw=true" />
 
 Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries. This plugin is not affiliated with or endorsed by Deque Systems, Inc.
 
@@ -93,7 +93,7 @@ cy.get('button').checkAccessibility();
 // Check the entire document with options
 cy.checkAccessibility({
   shouldFail: (violations) => violations.length > 0,
-  axeRunOptions: {
+  runOptions: {
     rules: {
       'color-contrast': { enabled: false },
     },
@@ -104,7 +104,7 @@ cy.checkAccessibility({
 // Check a specific element with options
 cy.get('button').checkAccessibility({
   shouldFail: (violations) => violations.length > 0,
-  axeRunOptions: {
+  runOptions: {
     rules: {
       'color-contrast': { enabled: false },
     },
@@ -118,7 +118,7 @@ cy.get('button').checkAccessibility({
 | Name            | Type                                                                                     | Default                                 | Description                                                                 |
 | --------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------- |
 | `shouldFail`    | `(violations: AxeResults['violations']) => boolean`                                      | `(violations) => violations.length > 0` | A function that determines if the test should fail based on the violations. |
-| `axeRunOptions` | [`axe.RunOptions`](https://github.com/dequelabs/axe-core/blob/master/axe.d.ts#L134-L149) | `{}`                                    | The options to pass to the `axe.run()` method.                              |
+| `runOptions` | [`axe.RunOptions`](https://github.com/dequelabs/axe-core/blob/master/axe.d.ts#L134-L149) | `{}`                                    | The options to pass to the `axe.run()` method.                              |
 | `reporters`     | `((results: AxeResults) => void)[]`                                                      | `[]`                                    | An array of functions that will be called with the results.                 |
 | `retry`         | `{ interval: number, times: number }`                                                    | `{ interval: 500, times: 0 }`           | The interval and number of times to retry the check if it fails.            |
 
