@@ -1,5 +1,11 @@
 # cypress-accessibility
 
+## 1.0.1
+
+### Patch Changes
+
+- [#10](https://github.com/rowellx68/cypress-accessibility/pull/10) [`5f1d3fc`](https://github.com/rowellx68/cypress-accessibility/commit/5f1d3fcfcb4b45b9fe66552307faf40ec0d27eeb) Thanks [@rowellx68](https://github.com/rowellx68)! - fix: ensure that retry options are always positive
+
 ## 1.0.0
 
 ### Major Changes
