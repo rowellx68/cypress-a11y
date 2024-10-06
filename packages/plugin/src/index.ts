@@ -26,6 +26,10 @@ declare global {
 }
 
 export type InjectAxeOptions = {
+  /**
+   * The path to the axe-core library.
+   * @default 'node_modules/axe-core/axe.min.js'
+   */
   path?: string;
 };
 
@@ -65,12 +69,16 @@ export type RetryOptions = {
 
   /**
    * The maximum number of retries.
-   * @default 2
+   * @default 0
    */
   limit?: number;
 };
 
 export type CypressAccessibilityReporter = (results: axe.AxeResults) => void;
+
+const pluralise = (count: number, word: string) => {
+  return count === 1 ? word : `${word}s`;
+};
 
 const injectAxe = (options: InjectAxeOptions = {}) => {
   const path = options?.path || 'node_modules/axe-core/axe.min.js';
@@ -101,7 +109,7 @@ const runA11y = async (
   run: typeof axe.run,
   context: axe.ElementContext,
   options: axe.RunOptions,
-  retry: Required<RetryOptions> = { interval: 500, limit: 0 },
+  retry: Required<RetryOptions>,
 ): Promise<axe.AxeResults> => {
   return run(context, options).then((results) => {
     if (results.violations.length === 0) {
@@ -118,8 +126,9 @@ const runA11y = async (
 
         Cypress.log({
           name: 'cypress-accessibility',
-          message: `retrying accessibility check (${limit} attempt${limit === 1 ? '' : 's'} remaining)`,
+          message: `${pluralise(results.violations.length, 'violation')} found, retrying checks (${limit} ${pluralise(limit, 'attempt')} remaining)`,
           type: 'parent',
+          consoleProps: () => results.violations,
         });
         resolve(runA11y(run, context, options, { ...retry, limit }));
       }, retry.interval);
@@ -180,8 +189,10 @@ const checkAccessibility = (
     })
     .then((results) => {
       if (shouldFail(results.violations)) {
+        const totalRuns = retry.limit + 1;
+
         assert.fail(
-          `accessibility violation${results.violations.length === 1 ? '' : 's'} found (${results.violations.length}) after ${retry.limit + 1} run${retry.limit === 0 ? '' : 's'}`,
+          `accessibility ${pluralise(results.violations.length, 'violation')} found (${results.violations.length}) after ${totalRuns} ${pluralise(totalRuns, 'run')}`,
         );
       }
 
