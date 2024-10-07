@@ -9,5 +9,7 @@ describe('example', () => {
       },
       reporters: [(results) => console.table(results.passes)],
     });
+
+    cy.get('a').checkAccessibility();
   });
 });
