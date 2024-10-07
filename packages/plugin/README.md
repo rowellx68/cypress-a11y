@@ -8,7 +8,7 @@
 
 Yet another Cypress plugin for accessibility testing powered by [axe-core®](https://github.com/dequelabs/axe-core). This is a fork of [cypress-axe](https://github.com/component-driven/cypress-axe) with some api changes and improvements.
 
-<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-accessibility/blob/main/docs/assets/basic-demo.png?raw=true" />
+<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-accessibility/blob/main/docs/assets/basic-demo-v1-0-2.png?raw=true" />
 
 Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries. This plugin is not affiliated with or endorsed by Deque Systems, Inc.
 
