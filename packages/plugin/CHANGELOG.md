@@ -1,5 +1,13 @@
 # cypress-accessibility
 
+## 1.0.2
+
+### Patch Changes
+
+- [#13](https://github.com/rowellx68/cypress-accessibility/pull/13) [`580f82f`](https://github.com/rowellx68/cypress-accessibility/commit/580f82f2d9b7f781841223c6ee43a134dd2192f6) Thanks [@rowellx68](https://github.com/rowellx68)! - fix: logging to show command names
+
+  This also fixes some issues with the consoleProps that gets returned.
+
 ## 1.0.1
 
 ### Patch Changes
