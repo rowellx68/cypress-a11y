@@ -1,5 +1,13 @@
 # cypress-accessibility
 
+## 1.0.3
+
+### Patch Changes
+
+- [#15](https://github.com/rowellx68/cypress-accessibility/pull/15) [`285890c`](https://github.com/rowellx68/cypress-accessibility/commit/285890c51070f8c64c607a3d17b58befbb0d2d2f) Thanks [@rowellx68](https://github.com/rowellx68)! - fix: reorder when reporters are called
+
+  This fixes the issue where the reportes are never called when the check fails.
+
 ## 1.0.2
 
 ### Patch Changes
