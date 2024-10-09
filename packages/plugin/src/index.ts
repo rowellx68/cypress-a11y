@@ -226,6 +226,8 @@ const checkAccessibility = (
       return cy.wrap(results, { log: false });
     })
     .then((results) => {
+      reporters.forEach((reporter) => reporter(results));
+
       if (shouldFail(results.violations)) {
         const totalRuns = Math.abs(retry.limit) + 1;
 
@@ -233,8 +235,6 @@ const checkAccessibility = (
           `accessibility ${pluralise(results.violations.length, 'violation')} found (${results.violations.length}) after ${totalRuns} ${pluralise(totalRuns, 'run')}`,
         );
       }
-
-      reporters.forEach((reporter) => reporter(results));
     });
 };
 
