@@ -1,18 +1,18 @@
-# cypress-accessibility
+# cypress-a11y-report
 
 ![MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![CI](https://img.shields.io/github/actions/workflow/status/rowellx68/cypress-accessibility/publish.yml?style=flat-square&label=Build%20and%20Publish)
-<a href="https://www.npmjs.com/package/cypress-accessibility">
-![NPM](https://img.shields.io/npm/v/cypress-accessibility?style=flat-square&label=Version)
+![CI](https://img.shields.io/github/actions/workflow/status/rowellx68/cypress-a11y-report/publish.yml?style=flat-square&label=Build%20and%20Publish)
+<a href="https://www.npmjs.com/package/cypress-a11y-report">
+![NPM](https://img.shields.io/npm/v/cypress-a11y-report?style=flat-square&label=Version)
 </a>
 
 Yet another Cypress plugin for accessibility testing powered by [axe-core®](https://github.com/dequelabs/axe-core). This is a fork of [cypress-axe](https://github.com/component-driven/cypress-axe) with some api changes and improvements.
 
-<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-accessibility/blob/main/docs/assets/basic-demo-v1-0-2.png?raw=true" />
+<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-a11y-report/blob/main/docs/assets/basic-demo-v1-0-2.png?raw=true" />
 
 Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries. This plugin is not affiliated with or endorsed by Deque Systems, Inc.
 
-If you're looking to migrate from `cypress-axe`, you can find the migration guide [here](https://github.com/rowellx68/cypress-accessibility/blob/main/docs).
+If you're looking to migrate from `cypress-axe`, you can find the migration guide [here](https://github.com/rowellx68/cypress-a11y-report/blob/main/docs).
 
 ## Installation
 
@@ -20,10 +20,10 @@ This plugin **only** works with Cypress version 10.0.0 or higher.
 
 ```bash
 # pnpm
-pnpm add cypress axe-core cypress-accessibility -D
+pnpm add cypress axe-core cypress-a11y-report -D
 
 # npm
-npm install cypress axe-core cypress-accessibility -D
+npm install cypress axe-core cypress-a11y-report -D
 ```
 
 ## Configuration
@@ -31,7 +31,7 @@ npm install cypress axe-core cypress-accessibility -D
 Add the following to your `cypress/support/e2e.ts` file:
 
 ```ts
-import 'cypress-accessibility';
+import 'cypress-a11y-report';
 ```
 
 ### TypeScript
@@ -41,7 +41,7 @@ If you are using TypeScript, you need to add the following to your `tsconfig.jso
 ```json
 {
   "compilerOptions": {
-    "types": ["cypress", "cypress-accessibility"]
+    "types": ["cypress", "cypress-a11y-report"]
   }
 }
 ```
@@ -50,7 +50,7 @@ If you are using TypeScript, you need to add the following to your `tsconfig.jso
 
 ### `cy.injectAxe()`
 
-Injects axe-core® into the current window and initializes it. This command should be called before any other `cypress-accessibility` commands.
+Injects axe-core® into the current window and initializes it. This command should be called before any other `cypress-a11y-report` commands.
 
 ```ts
 cy.injectAxe();

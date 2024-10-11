@@ -1,14 +1,14 @@
 {
-  "name": "cypress-accessibility",
+  "name": "cypress-a11y-report",
   "version": "1.0.3",
   "description": "Yet another Cypress plugin for accessibility testing powered by axe-core®",
-  "homepage": "https://github.com/rowellx68/cypress-accessibility",
+  "homepage": "https://github.com/rowellx68/cypress-a11y-report",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rowellx68/cypress-accessibility"
+    "url": "https://github.com/rowellx68/cypress-a11y-report"
   },
   "bugs": {
-    "url": "https://github.com/rowellx68/cypress-accessibility/issues"
+    "url": "https://github.com/rowellx68/cypress-a11y-report/issues"
   },
   "private": false,
   "publishConfig": {

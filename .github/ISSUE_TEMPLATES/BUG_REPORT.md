@@ -35,7 +35,7 @@ Include the following as a minimum e.g.
 * Browser version: 130.0.1
 *
 * Cypress version: 13.5.0
-* cypress-accessibility version: 0.2.0
+* cypress-a11y-report version: 0.2.0
 * Node version: v20.17.0
 * package manager: pnpm
 * package manager version: 9.11.0
@@ -45,7 +45,7 @@ Include the following as a minimum e.g.
 - Browser:
 - Browser version:
 - Cypress version:
-- cypress-accessibility version:
+- cypress-a11y-report version:
 - Node version:
 - package manager:
 - package manager version:
