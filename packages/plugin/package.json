@@ -1,6 +1,6 @@
 {
   "name": "cypress-a11y-report",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Yet another Cypress plugin for accessibility testing powered by axe-core®",
   "homepage": "https://github.com/rowellx68/cypress-a11y-report",
   "repository": {

@@ -1,5 +1,11 @@
 # cypress-accessibility
 
+## 1.0.4
+
+### Patch Changes
+
+- [#17](https://github.com/rowellx68/cypress-a11y-report/pull/17) [`e1897b7`](https://github.com/rowellx68/cypress-a11y-report/commit/e1897b7e0c038cbab7e1ee9005b8eeffa5cec795) Thanks [@rowellx68](https://github.com/rowellx68)! - docs: fix type in readme
+
 ## 1.0.3
 
 ### Patch Changes
