@@ -8,11 +8,13 @@
 
 Yet another Cypress plugin for accessibility testing powered by [axe-core®](https://github.com/dequelabs/axe-core). This is a fork of [cypress-axe](https://github.com/component-driven/cypress-axe) with some api changes and improvements.
 
-<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-a11y-report/blob/main/docs/assets/basic-demo-v1-0-2.png?raw=true" />
+<img title="Cypress basic demo" alt="Cypress showing results of a basic accessibility test against a sample website" src="https://github.com/rowellx68/cypress-a11y-report/blob/main/docs/assets/basic-demo-v1-1-0.png?raw=true" />
 
 Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries. This plugin is not affiliated with or endorsed by Deque Systems, Inc.
 
 If you're looking to migrate from `cypress-axe`, you can find the migration guide [here](https://github.com/rowellx68/cypress-a11y-report/blob/main/docs).
+
+> Previously published as `cypress-accessibility`. It has been renamed to `cypress-a11y-report` to avoid confusion with the official [Cypress Accessibility](https://www.cypress.io/blog/introducing-cypress-accessibility/) feature.
 
 ## Installation
 
