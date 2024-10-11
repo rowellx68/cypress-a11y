@@ -1,14 +1,14 @@
 # Migrating from `cypress-axe`
 
-This guide will help you migrate from `cypress-axe` to `cypress-accessibility`. Since the two plugins both use `axe-core`, the migration should be relatively straightforward.
+This guide will help you migrate from `cypress-axe` to `cypress-a11y-report`. Since the two plugins both use `axe-core`, the migration should be relatively straightforward.
 
 ## Steps
 
-1. Install `cypress-accessibility` and uninstall `cypress-axe`
-2. Update your references to `cypress-axe` to `cypress-accessibility`
+1. Install `cypress-a11y-report` and uninstall `cypress-axe`
+2. Update your references to `cypress-axe` to `cypress-a11y-report`
    - Update your `cypress/support/e2e.js` or `cypress/support/e2e.ts` file
    - Update your `tsconfig.json` file (if using TypeScript)
-3. Update your usage of the `cypress-axe` commands to the `cypress-accessibility` commands
+3. Update your usage of the `cypress-axe` commands to the `cypress-a11y-report` commands
 
 ## Update commands
 
@@ -53,7 +53,7 @@ This is where the majority of the changes will be required. All calls to `cy.che
 
 #### With context
 
-This `cypress-accessibility` feature allows you to chain the command to a specific element using `cy.get()`.
+This `cypress-a11y-report` feature allows you to chain the command to a specific element using `cy.get()`.
 
 ```diff
 -cy.checkA11y('.my-selector');

@@ -1,5 +1,5 @@
 {
-  "name": "cypress-accessibility-monorepo",
+  "name": "cypress-a11y-report-monorepo",
   "version": "0.0.0",
   "scripts": {
     "build": "pnpm -r build",

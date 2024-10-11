@@ -15,4 +15,4 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
-import 'cypress-accessibility';
+import 'cypress-a11y-report';

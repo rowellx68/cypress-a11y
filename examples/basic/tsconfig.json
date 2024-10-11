@@ -13,7 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "emitDeclarationOnly": true,
-    "types": ["cypress", "cypress-accessibility"]
+    "types": ["cypress", "cypress-a11y-report"]
   },
   "include": ["./cypress/**/*.ts", "./src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

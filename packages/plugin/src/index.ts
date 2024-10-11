@@ -113,7 +113,7 @@ const injectAxe = (options: InjectAxeOptions = {}) => {
 const configureAxe = (options: axe.Spec = {}) => {
   cy.window({ log: false }).then((win) => {
     if (!win.axe) {
-      assert.fail('cypress-accessibility: axe-core is not initialised');
+      assert.fail('cypress-a11y-report: axe-core is not initialised');
     }
 
     win.axe.configure(options);
@@ -185,7 +185,7 @@ const checkAccessibility = (
   cy.window({ log: false })
     .then((win) => {
       if (!win.axe) {
-        assert.fail('cypress-accessibility: axe-core is not initialised');
+        assert.fail('cypress-a11y-report: axe-core is not initialised');
       }
 
       const target = subject || win.document;
